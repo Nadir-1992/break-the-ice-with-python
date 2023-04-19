@@ -240,7 +240,42 @@ while 1:
         break
     print(f'Your current balance is: {money}')
 ```
+import re
+
+deposit_amount = 0
+withdrawal_amount = 0
+mistake = 0
+while True:
+    net_amount = deposit_amount - withdrawal_amount
+    ip = input(">").upper()
+    k = re.findall("[A-Z]\s(\d+)", ip)
+    j = ''.join(k)
+    if ip == 'D' + ' ' + j:
+        mistake = 0
+        j = int(j)
+        deposit_amount += j
+
+    elif ip == 'W' + ' ' + j:
+        mistake = 0
+        j = int(j)
+        withdrawal_amount += j
+    elif ip == '':
+        mistake = 0
+        if deposit_amount < withdrawal_amount:
+            print("hey! you can not withdrawal amount more than deposit. ")
+            print(f'you are requesting ({net_amount}) .First deposit more than {abs(net_amount)}')
+        else:
+            print(f'Net amount = {net_amount}')
+            break
+    else:
+        mistake += 1
+        print(mistake)
+        if mistake == 3:
+            break
+        print('Type D amount  or W amount')
+
 ---
+
 
 [**_go to previous day_**](https://github.com/darkprinx/100-plus-Python-programming-exercises-extended/blob/master/Status/Day%204.md "Day 4")
 
