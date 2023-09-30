@@ -135,6 +135,9 @@ num = int(input())
 print(reduce(fun,range(1, num+1), 1))
 ```
 ---
+"""TJ
+loop
+"""
 
 # Question 3
 
